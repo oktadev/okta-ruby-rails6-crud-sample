@@ -1,0 +1,10 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+<%= link_to 'Sign in via Okta', user_oktaoauth_omniauth_authorize_path, method: :post %>
+<% if @current_user %>
+<h1><%=@current_user.email %></h1>
+<%= link_to "Edit your account", "/pages/account", class: "item" %>
+<%= link_to "logout", ENV['OKTA_URL'] + "/login/signout?fromURI=http://localhost:3000/sessions/destroy", class: "item" %>
+<% else %>
+<%= link_to 'Sign in via Okta', user_oktaoauth_omniauth_authorize_path, method: :post %>
+<% end %>
